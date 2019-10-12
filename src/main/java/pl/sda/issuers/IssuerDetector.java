@@ -4,7 +4,15 @@ import java.util.List;
 
 public class IssuerDetector {
 
-    private IssuerRuleRepository repository = new IssuerRuleInMemoryRepository();
+    private IssuerRuleRepository repository;
+
+    public IssuerDetector() {
+        repository = new IssuerRuleInMemoryRepository();
+    }
+
+    public IssuerDetector(IssuerRuleRepository repository) {
+        this.repository = repository;
+    }
 
     public String detect(String cardNo) {
 
