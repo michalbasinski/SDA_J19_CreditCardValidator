@@ -26,7 +26,7 @@ public class LuhnArrayVerifier implements ChecksumVerifier {
         int[] convertedCardNo = new int[cardNo.length()];
         int counter = 0;
         for (Character digit : cardNo.toCharArray()) {
-            convertedCardNo[counter] = Integer.parseInt(digit.toString());
+            convertedCardNo[counter] = Character.getNumericValue(digit);
             counter++;
         }
         return convertedCardNo;
