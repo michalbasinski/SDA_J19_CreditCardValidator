@@ -5,6 +5,10 @@ public class IssuerRule {
     private String prefix;
     private int length;
 
+    public IssuerRule() {
+
+    }
+
     public IssuerRule(String name, String prefix, int length) {
         this.name = name;
         this.prefix = prefix;
