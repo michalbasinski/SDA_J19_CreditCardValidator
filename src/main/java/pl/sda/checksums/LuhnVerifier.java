@@ -1,19 +1,18 @@
 package pl.sda.checksums;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LuhnVerifier implements ChecksumVerifier {
-    @Override
-    public boolean verify(String number) {
-        //TODO: zaimplementować algorytm Luhna
-        int i = 0;
-        List<Integer> lista = new ArrayList<>();
-        lista.add(1);
-        lista.add(1222);
-        lista.add(1456);
-        lista.add(187);
-        lista.add(423421);
-        return lista.size() == 50;
+
+    public boolean verify(String cardNo) {
+        char[] chars = cardNo.toCharArray();
+        int counter = 1;
+        long sum = 0;
+        for (int i = chars.length - 1; i >= 0; i--) {
+            Integer increment = Character.getNumericValue(chars[i]);
+            increment = counter % 2 == 0 ? increment * 2 : increment;
+            increment = increment >= 10 ? increment - 9 : increment;
+            sum += increment;
+            counter++;
+        }
+        return sum % 10 == 0;
     }
 }
